@@ -3,8 +3,10 @@ package Logics;
 import Main.User;
 import org.apache.poi.hssf.usermodel.HSSFSheet;
 import org.apache.poi.ss.usermodel.Row;
-import java.io.FileReader;
-import java.io.IOException;
+
+import javax.net.ssl.HttpsURLConnection;
+import java.io.*;
+import java.net.URL;
 import java.nio.charset.StandardCharsets;
 import java.text.SimpleDateFormat;
 import java.util.*;
@@ -99,8 +101,26 @@ public class IOParse {
 	}
 
 	public static String localeRUS(String string) {
-		//todo: в общем, все перепробовал, не распознает большую 'И'
+		//todo: UTF_8 не распознает большую 'И', остальные не могут с русским алфавитом
 		return new String(string.getBytes(), StandardCharsets.UTF_8);
 	}
 
+	public static void httpRequest(String urlStr) throws Exception {
+		Random random = new Random();
+		//todo: осталось написать генерацию на стороне API и распарсить ответ(response).
+		urlStr += "?results=" + (1 + random.nextInt(30));
+
+		URL url = new URL(urlStr);
+		HttpsURLConnection connection = (HttpsURLConnection) url.openConnection();
+		BufferedReader in = new BufferedReader(new InputStreamReader(connection.getInputStream()));
+		String inputLine;
+		StringBuffer response = new StringBuffer();
+
+		while((inputLine = in.readLine()) != null) {
+			response.append(inputLine);
+		}
+		in.close();
+		System.out.println(response.toString());
+
+	}
 }

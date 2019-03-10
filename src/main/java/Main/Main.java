@@ -5,7 +5,6 @@ import org.apache.poi.hssf.usermodel.HSSFSheet;
 import org.apache.poi.hssf.usermodel.HSSFWorkbook;
 import org.apache.poi.ss.usermodel.Row;
 import java.io.*;
-import java.nio.charset.StandardCharsets;
 import java.util.*;
 
 public class Main {
@@ -51,6 +50,13 @@ public class Main {
         } catch (IOException e) {
             System.out.println(e.toString());
             throw e;
+        }
+
+        try {
+            //todo:надо будет доделать
+            IOParse.httpRequest("https://randomapi.com/api/e347c42dae4d565b8c3146f181720075");
+        } catch (Exception e) {
+            System.out.println(e.toString());
         }
     }
 }
