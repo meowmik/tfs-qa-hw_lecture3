@@ -11,6 +11,8 @@ public class Main {
 
     public  static void main(String[] args) throws IOException {
 
+        System.out.println("Старт");
+
         String path = "resources/";
 
         HSSFWorkbook workbook = new HSSFWorkbook();
@@ -44,13 +46,15 @@ public class Main {
         for (User user : users){
             IOParse.writeIntoFiles(sheet, ++rowNum, user);
         }
-        try {;
+        try {
             FileOutputStream out = new FileOutputStream(new File(path + "file.xls"));
             workbook.write(out);
+            System.out.println(path + "file.txt");
         } catch (IOException e) {
             System.out.println(e.toString());
             throw e;
         }
+        workbook.close();
 
         try {
             //todo:надо будет доделать
