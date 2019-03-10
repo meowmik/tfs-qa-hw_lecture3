@@ -5,6 +5,7 @@ import org.apache.poi.hssf.usermodel.HSSFSheet;
 import org.apache.poi.ss.usermodel.Row;
 import java.io.FileReader;
 import java.io.IOException;
+import java.nio.charset.StandardCharsets;
 import java.text.SimpleDateFormat;
 import java.util.*;
 
@@ -78,23 +79,28 @@ public class IOParse {
 		return dataModels;
 	}
 
-	public static void writeIntoFiles(HSSFSheet sheet, int rowNum, User dataModel) {
+	public static void writeIntoFiles(HSSFSheet sheet, int rowNum, User dataModel) throws IOException {
 		Row row = sheet.createRow(rowNum);
 
-		row.createCell(0).setCellValue(dataModel.getName());
-		row.createCell(1).setCellValue(dataModel.getSurname());
-		row.createCell(2).setCellValue(dataModel.getPatronymic());
+		row.createCell(0).setCellValue(IOParse.localeRUS(dataModel.getName()));
+		row.createCell(1).setCellValue(IOParse.localeRUS(dataModel.getSurname()));
+		row.createCell(2).setCellValue(IOParse.localeRUS(dataModel.getPatronymic()));
 		row.createCell(3).setCellValue(dataModel.getAge());
-		row.createCell(4).setCellValue(dataModel.getGender());
-		row.createCell(5).setCellValue(dataModel.getDOB());
+		row.createCell(4).setCellValue(IOParse.localeRUS(dataModel.getGender()));
+		row.createCell(5).setCellValue(IOParse.localeRUS(dataModel.getDOB()));
 		row.createCell(6).setCellValue(dataModel.getINN());
 		row.createCell(7).setCellValue(dataModel.getIndex());
-		row.createCell(8).setCellValue(dataModel.getCountries());
-		row.createCell(9).setCellValue(dataModel.getStates());
-		row.createCell(10).setCellValue(dataModel.getCities());
-		row.createCell(11).setCellValue(dataModel.getStreets());
+		row.createCell(8).setCellValue(IOParse.localeRUS(dataModel.getCountries()));
+		row.createCell(9).setCellValue(IOParse.localeRUS(dataModel.getStates()));
+		row.createCell(10).setCellValue(IOParse.localeRUS(dataModel.getCities()));
+		row.createCell(11).setCellValue(IOParse.localeRUS(dataModel.getStreets()));
 		row.createCell(12).setCellValue(dataModel.getHouse());
 		row.createCell(13).setCellValue(dataModel.getRoom());
+	}
+
+	public static String localeRUS(String string) {
+		//todo: в общем, все перепробовал, не распознает большую 'И'
+		return new String(string.getBytes(), StandardCharsets.UTF_8);
 	}
 
 }

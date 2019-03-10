@@ -1,2 +1,4 @@
-Main$User.class
-Main.class
+Main\Main.class
+Logics\IOParse.class
+Logics\Logic.class
+Main\User.class
