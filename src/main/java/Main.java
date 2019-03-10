@@ -137,19 +137,19 @@ public class Main {
             String city = cities.get(random.nextInt(cities.size()));
             ArrayList<String> streets = fileIntoArray("./data/streets.txt");
             String street = streets.get(random.nextInt(streets.size()));
-            long inn = 0;
-            if (state.equals("Московская")){
-                long ten = (long)Math.pow(10,10);
-                long longRand = Long.sum(1000000000L, random.nextLong() % 9999999999L);
-                inn = 77*ten + longRand;
-            }
+
+            long ten = (long)Math.pow(10,8);
+            int ran = 10 + random.nextInt(89);
+            int nnum = 100000 + random.nextInt(999999-100000);
+            long inn = 7700*ten + nnum*100 + ran;
+
             int index = 100000 +random.nextInt( 99999);
-            int house = 1 + random.nextInt(9999);
-            int room = 1 + random.nextInt(9999);
+            int house = 1 + random.nextInt(99);
+            int room = 1 + random.nextInt(399);
 
             GregorianCalendar dob = randomDob();
             int ageOfDob = new GregorianCalendar().getTime().getYear() - dob.getTime().getYear();
-			SimpleDateFormat fmt = new SimpleDateFormat("dd-MMM-yyyy");
+			SimpleDateFormat fmt = new SimpleDateFormat("dd-MM-yyyy");
 			fmt.setCalendar(dob);
 			String formatDob = fmt.format(dob.getTime());
 
