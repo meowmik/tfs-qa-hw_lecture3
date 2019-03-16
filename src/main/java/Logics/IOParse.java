@@ -3,13 +3,13 @@ package Logics;
 import Main.User;
 import org.apache.poi.hssf.usermodel.HSSFSheet;
 import org.apache.poi.ss.usermodel.Row;
-
 import javax.net.ssl.HttpsURLConnection;
 import java.io.*;
 import java.net.URL;
 import java.nio.charset.StandardCharsets;
 import java.text.SimpleDateFormat;
 import java.util.*;
+
 
 public class IOParse {
 
@@ -78,24 +78,25 @@ public class IOParse {
 			System.out.println("IOException from fillData: ");
 			throw e;
 		}
+
 		return dataModels;
 	}
 
 	public static void writeIntoFiles(HSSFSheet sheet, int rowNum, User dataModel) throws IOException {
 		Row row = sheet.createRow(rowNum);
 
-		row.createCell(0).setCellValue(IOParse.localeRUS(dataModel.getName()));
-		row.createCell(1).setCellValue(IOParse.localeRUS(dataModel.getSurname()));
-		row.createCell(2).setCellValue(IOParse.localeRUS(dataModel.getPatronymic()));
+		row.createCell(0).setCellValue(localeRUS(dataModel.getName()));
+		row.createCell(1).setCellValue(localeRUS(dataModel.getSurname()));
+		row.createCell(2).setCellValue(localeRUS(dataModel.getPatronymic()));
 		row.createCell(3).setCellValue(dataModel.getAge());
-		row.createCell(4).setCellValue(IOParse.localeRUS(dataModel.getGender()));
-		row.createCell(5).setCellValue(IOParse.localeRUS(dataModel.getDOB()));
+		row.createCell(4).setCellValue(localeRUS(dataModel.getGender()));
+		row.createCell(5).setCellValue(localeRUS(dataModel.getDOB()));
 		row.createCell(6).setCellValue(dataModel.getINN());
 		row.createCell(7).setCellValue(dataModel.getIndex());
-		row.createCell(8).setCellValue(IOParse.localeRUS(dataModel.getCountries()));
-		row.createCell(9).setCellValue(IOParse.localeRUS(dataModel.getStates()));
-		row.createCell(10).setCellValue(IOParse.localeRUS(dataModel.getCities()));
-		row.createCell(11).setCellValue(IOParse.localeRUS(dataModel.getStreets()));
+		row.createCell(8).setCellValue(localeRUS(dataModel.getCountries()));
+		row.createCell(9).setCellValue(localeRUS(dataModel.getStates()));
+		row.createCell(10).setCellValue(localeRUS(dataModel.getCities()));
+		row.createCell(11).setCellValue(localeRUS(dataModel.getStreets()));
 		row.createCell(12).setCellValue(dataModel.getHouse());
 		row.createCell(13).setCellValue(dataModel.getRoom());
 	}

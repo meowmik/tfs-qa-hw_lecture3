@@ -2,6 +2,7 @@ package Main;
 
 public class User {
 
+
 	//todo: названия поменять в countries/states/cities (house/room)
 	private String name = "";
 	private String surname = "";
@@ -17,6 +18,62 @@ public class User {
 	private String streets = "";
 	private int house;
 	private int room;
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public void setSurname(String surname) {
+		this.surname = surname;
+	}
+
+	public void setPatronymic(String patronymic) {
+		this.patronymic = patronymic;
+	}
+
+	public void setAge(int age) {
+		this.age = age;
+	}
+
+	public void setGender(String gender) {
+		this.gender = gender;
+	}
+
+	public void setDob(String dob) {
+		this.dob = dob;
+	}
+
+	public void setInn(long inn) {
+		this.inn = inn;
+	}
+
+	public void setIndex(int index) {
+		this.index = index;
+	}
+
+	public void setCountries(String countries) {
+		this.countries = countries;
+	}
+
+	public void setStates(String states) {
+		this.states = states;
+	}
+
+	public void setCities(String cities) {
+		this.cities = cities;
+	}
+
+	public void setStreets(String streets) {
+		this.streets = streets;
+	}
+
+	public void setHouse(int house) {
+		this.house = house;
+	}
+
+	public void setRoom(int room) {
+		this.room = room;
+	}
 
 	public String getName() {
 		return name;
