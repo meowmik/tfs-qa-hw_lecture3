@@ -1,4 +1,4 @@
-package Main;
+package ru.tinkoff.fintech.user;
 
 public class User {
 
