@@ -8,7 +8,6 @@ import javax.net.ssl.HttpsURLConnection;
 import java.io.*;
 import java.net.URL;
 import java.nio.charset.StandardCharsets;
-import java.text.SimpleDateFormat;
 import java.util.*;
 
 
@@ -116,13 +115,13 @@ public class IOParse {
 			ArrayList<User> users = generateOnline(urlStr);
 			System.out.println("Есть соединение");
 			return users;
-		} catch (Exception e) {
+		} catch (IOException e) {
 			System.out.println("Нет соединения");
 			return generateOffline(dataPath);
 		}
 	}
 
-	private static void writeIntoFiles(HSSFSheet sheet, int rowNum, User dataModel) throws IOException {
+	private static void writeIntoFiles(HSSFSheet sheet, int rowNum, User dataModel){
 		Row row = sheet.createRow(rowNum);
 
 		row.createCell(0).setCellValue(localeRUS(dataModel.getName()));
@@ -145,11 +144,11 @@ public class IOParse {
 		return new String(string.getBytes(), StandardCharsets.UTF_8);
 	}
 
-	private static ArrayList<User> generateOnline(String urlStr) throws Exception{
+	private static ArrayList<User> generateOnline(String urlStr) throws IOException{
 		return jsonToUsers(httpRequest(urlStr));
 	}
 
-	private static String httpRequest(String urlStr) throws Exception {
+	private static String httpRequest(String urlStr) throws IOException {
 		Random random = new Random();
 		urlStr += "?results=" + (1+random.nextInt(30));
 
@@ -209,8 +208,8 @@ public class IOParse {
 
 	private static String[] strToPair (String field) {
 		String[] pair = field.split(":");
-		pair[0] = pair[0].substring(1, pair[0].length() - 2);
-		pair[1] = pair[1].substring(1, pair[1].length() - 2);
+		pair[0] = pair[0].substring(1, pair[0].length() - 1);
+		pair[1] = pair[1].substring(1, pair[1].length() - 1);
 		return pair;
 	}
 }

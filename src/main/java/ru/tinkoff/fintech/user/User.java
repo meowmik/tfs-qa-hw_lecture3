@@ -3,7 +3,6 @@ package ru.tinkoff.fintech.user;
 public class User {
 
 
-	//todo: названия поменять в countries/states/cities (house/room)
 	private String name = "";
 	private String surname = "";
 	private String patronymic = "";

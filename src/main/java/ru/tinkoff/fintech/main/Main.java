@@ -1,9 +1,6 @@
 package ru.tinkoff.fintech.main;
 
 import ru.tinkoff.fintech.logics.IOParse;
-import org.apache.poi.hssf.usermodel.HSSFSheet;
-import org.apache.poi.hssf.usermodel.HSSFWorkbook;
-import org.apache.poi.ss.usermodel.Row;
 import ru.tinkoff.fintech.user.User;
 
 import java.io.*;
@@ -21,7 +18,7 @@ public class Main {
 		try{
 			ArrayList<User> users = IOParse.fillData(path, "https://randomapi.com/api/e347c42dae4d565b8c3146f181720075");
 			IOParse.writeToFile(users, path);
-		} catch (Exception e){
+		} catch (IOException e){
 			System.err.printf("%s\n", e.toString());
 			System.exit(-1);
 		}
